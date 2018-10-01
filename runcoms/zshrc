@@ -11,3 +11,26 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+setopt no_share_history
+
+# Aliases
+alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias nginx_start="sudo launchctl load -F /Library/LaunchDaemons/homebrew.mxcl.nginx.plist"
+alias nginx_stop="sudo launchctl unload -F /Library/LaunchDaemons/homebrew.mxcl.nginx.plist"
+alias adb-all="adb devices | awk 'NR>1{print \$1}' | parallel -rkj0 --tagstring 'on {}: ' adb -s {}"
+alias vim="nvim"
+
+# Environment variables
+#export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export LANG=fr_FR.UTF-8
+
+export EDITOR=nano
+
+alias gologs="DOCKER_HOST=tcp://coreos:2375 docker logs -f game-server1"
+alias gologs2="DOCKER_HOST=tcp://coreos:2375 docker logs -f game-server2"
+
+# android
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
